@@ -1,21 +1,23 @@
-import { useContext } from "react";
-import Capa from "../../components/Capa";
+import game from "../../assets/game.png";
 import Header from "../../components/Header";
-import Menu from "../../components/Menu";
+import { useContext } from "react";
 import { AuthMarvelContext } from "../../context/MarvelContext";
+import Menu from "../../components/Menu";
 import { Container } from "./styles";
 
-const Home = () => {
+const Game = () => {
   const { isModal } = useContext(AuthMarvelContext);
   return (
     <>
       <Container>
         <Header />
-        <Capa />
+        <div className="name-logo">
+          <img src={game} alt="" />
+        </div>
       </Container>
       {isModal && <Menu />}
     </>
   );
 };
 
-export default Home;
+export default Game;

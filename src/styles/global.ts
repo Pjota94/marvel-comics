@@ -8,7 +8,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
   body{
-    
+    background: #030305;
+   
   }
   button{
     cursor: pointer;
