@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import {
   ICharacter,
   ICharacterIMG,
+  IComic,
   IProviderPros,
   IValueProps,
 } from "../interface";
@@ -25,6 +26,9 @@ const MarvelContext = ({ children }: IProviderPros) => {
   const [pageComic, setPageComic] = useState(0);
   const [nameSearch, setNameSearch] = useState("");
   const [character, setCharacter] = useState<ICharacter[]>([]);
+  const [oneComic, setOneComic] = useState<IComic[]>([]);
+  const [modalImg, setModalImg] = useState(false);
+  const [comicsCharacter, setComicsCharacter] = useState<ICharacterIMG[]>([]);
 
   const listCharacter = () => {
     if (nameSearch === "") {
@@ -67,6 +71,29 @@ const MarvelContext = ({ children }: IProviderPros) => {
       .catch((err) => console.log(err));
   };
 
+  const listOneComic = (id: string) => {
+    api
+      .get(
+        `/v1/public/comics/${id}?ts=${time}&apikey=${publicKey}&hash=${hash}`
+      )
+      .then((res) => {
+        setOneComic(res.data.data.results);
+        navigate("/quadrinho");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const listCharacterComics = (id: string) => {
+    api
+      .get(
+        `/v1/public/characters/${id}/comics?ts=${time}&apikey=${publicKey}&hash=${hash}`
+      )
+      .then((res) => {
+        setComicsCharacter(res.data.data.results);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <AuthMarvelContext.Provider
       value={{
@@ -85,6 +112,13 @@ const MarvelContext = ({ children }: IProviderPros) => {
         character,
         setCharacter,
         listOneCharacter,
+        oneComic,
+        setOneComic,
+        listOneComic,
+        modalImg,
+        setModalImg,
+        listCharacterComics,
+        comicsCharacter,
       }}
     >
       {children}

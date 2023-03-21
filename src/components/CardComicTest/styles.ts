@@ -33,15 +33,9 @@ export const Container = styled.div`
     }
   }
 
-  /* &&:hover {
-    -webkit-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    transform: scale(1.2);
-    transition: 300ms linear;
-  } */
-
   img {
     width: 139px;
     height: 203px;
+    cursor: pointer;
   }
 `;

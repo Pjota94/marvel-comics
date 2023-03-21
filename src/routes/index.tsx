@@ -3,6 +3,7 @@ import Game from "../pages/Game";
 import Home from "../pages/Home";
 import Personagem from "../pages/Personagem";
 import Personagens from "../pages/Personagens";
+import Quadrinho from "../pages/Quadrinho";
 import Quadrinhos from "../pages/Quadrinhos";
 
 const RoutesMain = () => {
@@ -13,6 +14,7 @@ const RoutesMain = () => {
       <Route path="/quadrinhos" element={<Quadrinhos />} />
       <Route path="/game" element={<Game />} />
       <Route path="/personagem" element={<Personagem />} />
+      <Route path="/quadrinho" element={<Quadrinho />} />
     </Routes>
   );
 };

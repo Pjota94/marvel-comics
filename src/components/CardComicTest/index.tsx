@@ -1,10 +1,18 @@
 import { Container } from "./styles";
-import img from "../../assets/iron.jpg";
+import { ICharacterIMG } from "../../interface";
+import { useContext } from "react";
+import { AuthMarvelContext } from "../../context/MarvelContext";
 
-const CardComicTest = () => {
+const CardComicTest = ({ thumbnail, id }: ICharacterIMG) => {
+  const { listOneComic } = useContext(AuthMarvelContext);
   return (
     <Container>
-      <img src={img} alt="" />
+      <img
+        onClick={() => listOneComic(id)}
+        id={id}
+        src={`${thumbnail.path}/portrait_xlarge.${thumbnail.extension}`}
+        alt=""
+      />
     </Container>
   );
 };

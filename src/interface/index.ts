@@ -16,6 +16,13 @@ export interface IValueProps {
   character: ICharacter[];
   setCharacter: Dispatch<SetStateAction<ICharacter[]>>;
   listOneCharacter: (id: string) => void;
+  oneComic: IComic[];
+  setOneComic: Dispatch<SetStateAction<IComic[]>>;
+  listOneComic: (id: string) => void;
+  modalImg: boolean;
+  setModalImg: Dispatch<SetStateAction<boolean>>;
+  listCharacterComics: (id: string) => void;
+  comicsCharacter: ICharacterIMG[];
 }
 
 export interface IProviderPros {
@@ -36,4 +43,10 @@ export interface ICharacter {
 export interface ITumbnail {
   extension: string;
   path: string;
+}
+
+export interface IComic {
+  title: string;
+  description: string;
+  thumbnail: ITumbnail;
 }

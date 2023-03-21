@@ -4,11 +4,15 @@ import { useContext } from "react";
 import { AuthMarvelContext } from "../../context/MarvelContext";
 
 const Card = ({ thumbnail, id }: ICharacterIMG) => {
-  const { listOneCharacter } = useContext(AuthMarvelContext);
+  const { listOneCharacter, listCharacterComics } =
+    useContext(AuthMarvelContext);
   return (
     <Container>
       <img
-        onClick={() => listOneCharacter(id)}
+        onClick={() => {
+          listOneCharacter(id);
+          listCharacterComics(id);
+        }}
         id={id}
         src={`${thumbnail.path}/portrait_xlarge.${thumbnail.extension}`}
         alt=""
