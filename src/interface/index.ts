@@ -13,6 +13,9 @@ export interface IValueProps {
   nameSearch: string;
   pageComic: number;
   setPageComic: Dispatch<SetStateAction<number>>;
+  character: ICharacter[];
+  setCharacter: Dispatch<SetStateAction<ICharacter[]>>;
+  listOneCharacter: (id: string) => void;
 }
 
 export interface IProviderPros {
@@ -22,6 +25,12 @@ export interface IProviderPros {
 export interface ICharacterIMG {
   thumbnail: ITumbnail;
   id: string;
+}
+
+export interface ICharacter {
+  name: string;
+  description: string;
+  thumbnail: ITumbnail;
 }
 
 export interface ITumbnail {

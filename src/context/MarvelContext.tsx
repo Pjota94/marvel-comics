@@ -1,7 +1,13 @@
 import { createContext, useState } from "react";
-import { ICharacterIMG, IProviderPros, IValueProps } from "../interface";
+import {
+  ICharacter,
+  ICharacterIMG,
+  IProviderPros,
+  IValueProps,
+} from "../interface";
 import md5 from "md5";
 import { api } from "../service/api";
+import { useNavigate } from "react-router-dom";
 
 export const AuthMarvelContext = createContext<IValueProps>({} as IValueProps);
 
@@ -10,6 +16,7 @@ const MarvelContext = ({ children }: IProviderPros) => {
   const privateKey = "d7278bfc52d3c791d9f720883c8be59dfe7c0628";
   const time = Number(new Date());
   const hash = md5(time + privateKey + publicKey);
+  const navigate = useNavigate();
 
   const [isModal, setIsModal] = useState(false);
   const [characters, setCharacters] = useState<ICharacterIMG[]>([]);
@@ -17,6 +24,7 @@ const MarvelContext = ({ children }: IProviderPros) => {
   const [page, setPage] = useState(0);
   const [pageComic, setPageComic] = useState(0);
   const [nameSearch, setNameSearch] = useState("");
+  const [character, setCharacter] = useState<ICharacter[]>([]);
 
   const listCharacter = () => {
     if (nameSearch === "") {
@@ -47,6 +55,18 @@ const MarvelContext = ({ children }: IProviderPros) => {
       .catch((err) => console.log(err));
   };
 
+  const listOneCharacter = (id: string) => {
+    api
+      .get(
+        `/v1/public/characters/${id}?ts=${time}&apikey=${publicKey}&hash=${hash}`
+      )
+      .then((res) => {
+        setCharacter(res.data.data.results);
+        navigate("/personagem");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <AuthMarvelContext.Provider
       value={{
@@ -62,6 +82,9 @@ const MarvelContext = ({ children }: IProviderPros) => {
         nameSearch,
         pageComic,
         setPageComic,
+        character,
+        setCharacter,
+        listOneCharacter,
       }}
     >
       {children}
