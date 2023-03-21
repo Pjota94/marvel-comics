@@ -51,5 +51,6 @@ export const Container = styled.div`
   img {
     width: 139px;
     height: 203px;
+    cursor: pointer;
   }
 `;

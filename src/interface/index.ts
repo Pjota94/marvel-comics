@@ -23,6 +23,8 @@ export interface IValueProps {
   setModalImg: Dispatch<SetStateAction<boolean>>;
   listCharacterComics: (id: string) => void;
   comicsCharacter: ICharacterIMG[];
+  modalImgChar: boolean;
+  setModalImgChar: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface IProviderPros {

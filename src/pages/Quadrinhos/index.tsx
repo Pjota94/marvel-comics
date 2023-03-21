@@ -8,6 +8,7 @@ import { ContainerCards, Pagination } from "../Personagens/styles";
 import CardComic from "../../components/CardComic";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIos } from "react-icons/md";
+import comics from "../../assets/comics.png";
 
 const Quadrinhos = () => {
   const { isModal, listComic, comic, pageComic, setPageComic } =
@@ -30,7 +31,7 @@ const Quadrinhos = () => {
       <Container>
         <Header />
         <div className="name-logo">
-          <img src={quadrinhos} alt="" />
+          <img src={comics} alt="" />
         </div>
       </Container>
       <ContainerCards>

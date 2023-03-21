@@ -10,11 +10,11 @@ const RoutesMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/personagens" element={<Personagens />} />
-      <Route path="/quadrinhos" element={<Quadrinhos />} />
+      <Route path="/characters" element={<Personagens />} />
+      <Route path="/comics" element={<Quadrinhos />} />
       <Route path="/game" element={<Game />} />
-      <Route path="/personagem" element={<Personagem />} />
-      <Route path="/quadrinho" element={<Quadrinho />} />
+      <Route path="/character" element={<Personagem />} />
+      <Route path="/comic" element={<Quadrinho />} />
     </Routes>
   );
 };

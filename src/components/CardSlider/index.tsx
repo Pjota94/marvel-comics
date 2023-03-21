@@ -1,6 +1,6 @@
 import { BoxSlider, Container } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar } from "swiper";
+import { FreeMode, Navigation, Pagination, Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -17,22 +17,24 @@ const CardSlider = () => {
       <BoxSlider>
         <Swiper
           grab-cursor="true"
-          spaceBetween={20}
-          slidesPerView={3}
+          spaceBetween={50}
+          slidesPerView={2}
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          modules={[Navigation, Pagination, Scrollbar]}
+          modules={[Navigation, Pagination, Scrollbar, FreeMode]}
         >
-          {comicsCharacter.map((elem, index) => (
-            <SwiperSlide>
-              <CardComicTest
-                thumbnail={elem.thumbnail}
-                key={index}
-                id={elem.id}
-              />
-            </SwiperSlide>
-          ))}
+          <div>
+            {comicsCharacter.map((elem, index) => (
+              <SwiperSlide>
+                <CardComicTest
+                  thumbnail={elem.thumbnail}
+                  key={index}
+                  id={elem.id}
+                />
+              </SwiperSlide>
+            ))}
+          </div>
         </Swiper>
       </BoxSlider>
     </Container>

@@ -1,7 +1,7 @@
 import { Container } from "./styles";
-import inicio from "../../assets/Menu/inicio.png";
-import personagens from "../../assets/Menu/personagens.png";
-import quadrinhos from "../../assets/Menu/quadrinhos.png";
+import home from "../../assets/Menu/home.png";
+import characters from "../../assets/Menu/characters.png";
+import comics from "../../assets/Menu/comics.png";
 import game from "../../assets/Menu/game.png";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ const MenuNames = () => {
   return (
     <Container>
       <img
-        src={inicio}
+        src={home}
         alt=""
         onClick={() => {
           navigate("/", { replace: true });
@@ -22,17 +22,17 @@ const MenuNames = () => {
       />
       <img
         onClick={() => {
-          navigate("/personagens", { replace: true });
+          navigate("/characters", { replace: true });
           setIsModal(false);
         }}
-        src={personagens}
+        src={characters}
         alt=""
       />
       <img
-        src={quadrinhos}
+        src={comics}
         alt=""
         onClick={() => {
-          navigate("/quadrinhos", { replace: true });
+          navigate("/comics", { replace: true });
           setIsModal(false);
         }}
       />

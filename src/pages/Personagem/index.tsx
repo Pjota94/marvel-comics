@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import CardSlider from "../../components/CardSlider";
 import Header from "../../components/Header";
+import ImgCharacters from "../../components/ImgCharacters";
 import Menu from "../../components/Menu";
 import { AuthMarvelContext } from "../../context/MarvelContext";
 import { Container, Content } from "./styles";
 
 const Personagem = () => {
-  const { isModal, character } = useContext(AuthMarvelContext);
+  const { isModal, character, modalImgChar, setModalImgChar } =
+    useContext(AuthMarvelContext);
   return (
     <>
       <Container>
@@ -17,6 +19,7 @@ const Personagem = () => {
             <img
               src={`${character[0].thumbnail.path}/standard_fantastic.${character[0].thumbnail.extension}`}
               alt=""
+              onClick={() => setModalImgChar(true)}
             />
           </div>
           <div className="description">
@@ -31,6 +34,7 @@ const Personagem = () => {
         <CardSlider />
       </Container>
       {isModal && <Menu />}
+      {modalImgChar && <ImgCharacters />}
     </>
   );
 };

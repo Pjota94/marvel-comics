@@ -1,13 +1,14 @@
 import { Container, ContainerCards, Pagination } from "./styles";
 import personagens from "../../assets/personagens.png";
 import Header from "../../components/Header";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthMarvelContext } from "../../context/MarvelContext";
 import Menu from "../../components/Menu";
 import Card from "../../components/Card";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIos } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
+import vai from "../../assets/vai.png";
 
 const Personagens = () => {
   const {
@@ -38,7 +39,7 @@ const Personagens = () => {
         <Header />
         <div className="name-logo">
           <p></p>
-          <img src={personagens} alt="" />
+          <img src={vai} alt="" />
           <div className="input-search">
             <BiSearch />
             <input

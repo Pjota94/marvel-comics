@@ -29,6 +29,7 @@ const MarvelContext = ({ children }: IProviderPros) => {
   const [oneComic, setOneComic] = useState<IComic[]>([]);
   const [modalImg, setModalImg] = useState(false);
   const [comicsCharacter, setComicsCharacter] = useState<ICharacterIMG[]>([]);
+  const [modalImgChar, setModalImgChar] = useState(false);
 
   const listCharacter = () => {
     if (nameSearch === "") {
@@ -66,7 +67,7 @@ const MarvelContext = ({ children }: IProviderPros) => {
       )
       .then((res) => {
         setCharacter(res.data.data.results);
-        navigate("/personagem");
+        navigate("/character");
       })
       .catch((err) => console.log(err));
   };
@@ -78,7 +79,7 @@ const MarvelContext = ({ children }: IProviderPros) => {
       )
       .then((res) => {
         setOneComic(res.data.data.results);
-        navigate("/quadrinho");
+        navigate("/comic");
       })
       .catch((err) => console.log(err));
   };
@@ -119,6 +120,8 @@ const MarvelContext = ({ children }: IProviderPros) => {
         setModalImg,
         listCharacterComics,
         comicsCharacter,
+        modalImgChar,
+        setModalImgChar,
       }}
     >
       {children}
