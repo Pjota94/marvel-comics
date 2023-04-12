@@ -18,6 +18,7 @@ export const Container = styled.div`
   );
   background-size: 300% 300%;
   animation: colors 1.8s ease-in-out infinite;
+  cursor: pointer;
 
   @keyframes colors {
     0% {

@@ -25,6 +25,8 @@ export interface IValueProps {
   comicsCharacter: ICharacterIMG[];
   modalImgChar: boolean;
   setModalImgChar: Dispatch<SetStateAction<boolean>>;
+  loading: boolean;
+  loading2: boolean;
 }
 
 export interface IProviderPros {

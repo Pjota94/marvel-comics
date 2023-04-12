@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import {
   ICharacter,
   ICharacterIMG,
@@ -30,14 +30,20 @@ const MarvelContext = ({ children }: IProviderPros) => {
   const [modalImg, setModalImg] = useState(false);
   const [comicsCharacter, setComicsCharacter] = useState<ICharacterIMG[]>([]);
   const [modalImgChar, setModalImgChar] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
 
-  const listCharacter = () => {
+  const listCharacter = useCallback(() => {
     if (nameSearch === "") {
+      setLoading(true);
       api
         .get(
           `/v1/public/characters?limit=100&offset=${page}&ts=${time}&apikey=${publicKey}&hash=${hash}`
         )
-        .then((res) => setCharacters(res.data.data.results))
+        .then((res) => {
+          setLoading(false);
+          setCharacters(res.data.data.results);
+        })
         .catch((err) => console.log(err));
     } else {
       api
@@ -49,16 +55,20 @@ const MarvelContext = ({ children }: IProviderPros) => {
         })
         .catch((err) => console.log(err));
     }
-  };
+  }, [page, nameSearch]);
 
-  const listComic = () => {
+  const listComic = useCallback(() => {
+    setLoading2(true);
     api
       .get(
         `/v1/public/comics?limit=100&offset=${pageComic}&ts=${time}&apikey=${publicKey}&hash=${hash}`
       )
-      .then((res) => setComic(res.data.data.results))
+      .then((res) => {
+        setLoading2(false);
+        setComic(res.data.data.results);
+      })
       .catch((err) => console.log(err));
-  };
+  }, [pageComic]);
 
   const listOneCharacter = (id: string) => {
     api
@@ -122,6 +132,8 @@ const MarvelContext = ({ children }: IProviderPros) => {
         comicsCharacter,
         modalImgChar,
         setModalImgChar,
+        loading,
+        loading2,
       }}
     >
       {children}

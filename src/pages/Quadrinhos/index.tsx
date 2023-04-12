@@ -9,14 +9,15 @@ import CardComic from "../../components/CardComic";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIos } from "react-icons/md";
 import comics from "../../assets/comics.png";
+import Loading from "../../components/Loading";
 
 const Quadrinhos = () => {
-  const { isModal, listComic, comic, pageComic, setPageComic } =
+  const { isModal, listComic, comic, pageComic, setPageComic, loading2 } =
     useContext(AuthMarvelContext);
 
   useEffect(() => {
     listComic();
-  }, [pageComic]);
+  }, [listComic]);
 
   const paginationNext = () => {
     setPageComic(pageComic + 100);
@@ -34,11 +35,18 @@ const Quadrinhos = () => {
           <img src={comics} alt="" />
         </div>
       </Container>
-      <ContainerCards>
-        {comic.map((comic) => (
-          <CardComic key={comic.id} thumbnail={comic.thumbnail} id={comic.id} />
-        ))}
-      </ContainerCards>
+      {loading2 && <Loading />}
+      {!loading2 && (
+        <ContainerCards>
+          {comic.map((comic) => (
+            <CardComic
+              key={comic.id}
+              thumbnail={comic.thumbnail}
+              id={comic.id}
+            />
+          ))}
+        </ContainerCards>
+      )}
       <Pagination>
         {pageComic === 0 ? (
           <></>

@@ -2,7 +2,6 @@ import { Container } from "./styles";
 import home from "../../assets/Menu/home.png";
 import characters from "../../assets/Menu/characters.png";
 import comics from "../../assets/Menu/comics.png";
-import game from "../../assets/Menu/game.png";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthMarvelContext } from "../../context/MarvelContext";
@@ -33,14 +32,6 @@ const MenuNames = () => {
         alt=""
         onClick={() => {
           navigate("/comics", { replace: true });
-          setIsModal(false);
-        }}
-      />
-      <img
-        src={game}
-        alt=""
-        onClick={() => {
-          navigate("/game", { replace: true });
           setIsModal(false);
         }}
       />

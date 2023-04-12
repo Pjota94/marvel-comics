@@ -1,5 +1,4 @@
 import { Container, ContainerCards, Pagination } from "./styles";
-import personagens from "../../assets/personagens.png";
 import Header from "../../components/Header";
 import { useContext, useEffect } from "react";
 import { AuthMarvelContext } from "../../context/MarvelContext";
@@ -9,6 +8,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { MdArrowBackIos } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import vai from "../../assets/vai.png";
+import Loading from "../../components/Loading";
 
 const Personagens = () => {
   const {
@@ -19,11 +19,12 @@ const Personagens = () => {
     setPage,
     nameSearch,
     setNameSearch,
+    loading,
   } = useContext(AuthMarvelContext);
 
   useEffect(() => {
     listCharacter();
-  }, [nameSearch, page]);
+  }, [listCharacter]);
 
   const paginationNext = () => {
     setPage(page + 100);
@@ -50,11 +51,14 @@ const Personagens = () => {
             />
           </div>
         </div>
-        <ContainerCards>
-          {characters.map((hero, index) => (
-            <Card key={hero.id} thumbnail={hero.thumbnail} id={hero.id} />
-          ))}
-        </ContainerCards>
+        {loading && <Loading />}
+        {!loading && (
+          <ContainerCards>
+            {characters.map((hero, index) => (
+              <Card key={hero.id} thumbnail={hero.thumbnail} id={hero.id} />
+            ))}
+          </ContainerCards>
+        )}
         <Pagination>
           {page === 0 ? (
             <></>
